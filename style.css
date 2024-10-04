@@ -1,0 +1,39 @@
+*{
+    margin: 0;
+}
+.navbar{
+    display: flex;
+    background-color: bisque;
+    padding: 10px 20px;
+    justify-content: space-between;
+    font-family: monospace;
+    font-size: 20px;
+    align-items: center;
+}
+.nav-item-container{
+    display: flex;
+    column-gap: 20px;
+    font-family: fantasy;
+    align-items: center;
+}
+button{
+    background-color: rgb(252, 101, 0);
+    color: chartreuse;
+    font-family: fantasy;
+}
+footer{
+    display: flex;
+    background-color: rgb(255, 2, 234);
+    color: rgb(0, 207, 190);
+    padding: 30px 20px;
+    font-family: cursive;
+    font-size: 20px;
+}
+.body{
+    background-color: rgb(255, 255, 255);
+    color: rgb(207, 41, 0);
+    font-family: cursive;
+    font-size: 20px;
+    margin-bottom: 100%;
+    column-gap: 50px;
+}
