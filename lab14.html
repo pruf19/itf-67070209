@@ -7,44 +7,51 @@
     <link rel="stylesheet" href="style2.css">
 </head>
 <body>
-    <div class="profile" id="profile">
-        <div class="notify">
-            <p>Cute!!</p>
+    <div class="bodycenter">
+        <div class="profile" id="profile">
+            <div class="notify">
+                <p>Cute!!</p>
+            </div>
         </div>
-    </div>
-    <h1 id="username">Username,Hi</h1>
-    <label>Set Username</label><input id="input-name" type="text"><button onclick="setName()">Set</button><br/>
-    <label>Set Image</label><input id="input-url" type="text"><button onclick="SetImg()">Set</button><br/>
+    
+    <div class="bodycenter">
+        <h1 id="username">Username,Hi</h1><br>
+        <label>Set Username</label><input id="input-name" type="text"><button onclick="setName()">Set</button><br>
+        <label>Set Image</label><input id="input-url" type="text"><button onclick="SetImg()">Set</button><br>
 
-    <input type="text" id="inputTable1">
-    <input type="text" id="inputTable2">
-    <button onclick="addRow()">Add</button>
-    <button onclick="saveCSV()">Export</button>
-    <table id="table">
-        <tr>
-            <th>Name</th>
-            <th>Phone Number</th>
-        </tr>
-    </table>
+        <label>Name</label><input type="text" id="inputTable1"> 
+        <label>PhoneNumber</label><input type="text" id="inputTable2">
+        <button onclick="addRow()">Add</button>
+        <button onclick="saveCSV()">Export</button>
+        <table id="table">
+            <tr>
+                <th>Name</th>
+                <th>Phone Number</th>
+            </tr>
+        </table>
+    </div>
 
     <script>
         const name = document.getElementById("username");
         const inputName = document.getElementById("input-name");
         const profile = document.getElementById("profile");
-        const Inputurl = document.getElementById("input-url")
-        const table = document.getElementById("table")
+        const Inputurl = document.getElementById("input-url");
+        const table = document.getElementById("table");
         const inputTable1 = document.getElementById("inputTable1");
         const inputTable2 = document.getElementById("inputTable2");
-
-        function setName(){
+    
+        // สร้างอาร์เรย์สำหรับเก็บข้อมูล
+        const phoneNumbers = [];
+    
+        function setName() {
             name.textContent = inputName.value + ", WOW";
         }
-
-        function SetImg(){
-            profile.style.backgroundImage = "url(" + Inputurl.value +")"
+    
+        function SetImg() {
+            profile.style.backgroundImage = "url(" + Inputurl.value + ")";
         }
-
-        function addRow(){
+    
+        function addRow() {
             const row = document.createElement("tr");
             const cell1 = document.createElement("td");
             const cell2 = document.createElement("td");
@@ -53,9 +60,17 @@
             row.appendChild(cell1);
             row.appendChild(cell2);
             table.appendChild(row);
+    
+            // เพิ่มข้อมูลลงในอาร์เรย์
+            phoneNumbers.push([inputTable1.value, inputTable2.value]);
+            
+            // ล้างค่าหลังเพิ่มข้อมูล
+            inputTable1.value = "";
+            inputTable2.value = "";
         }
-        function saveCSV(){
-            const csvContent = phonenumber.map(row => row.join(",")).join("\n"); // Convert array to CSV string
+    
+        function saveCSV() {
+            const csvContent = phoneNumbers.map(row => row.join(",")).join("\n"); // ใช้อาร์เรย์ phoneNumbers
             const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
             const link = document.createElement("a");
             const url = URL.createObjectURL(blob);
@@ -65,7 +80,7 @@
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);
-        };
+        }
     </script>
 </body>
 </html>
