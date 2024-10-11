@@ -1,0 +1,22 @@
+.profile{
+    width: 300px;
+    height: 300px;
+    background-image: url(https://t4.ftcdn.net/jpg/03/03/62/45/360_F_303624505_u0bFT1Rnoj8CMUSs8wMCwoKlnWlh5Jiq.jpg);
+    border-radius: 50%;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+.notify{
+    width: 50px;
+    height: 50px;
+    background-color: blue;
+    color: aquamarine;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center ;
+    align-content: center;
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+}

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab14</title>
+    <link rel="stylesheet" href="style2.css">
+</head>
+<body>
+    <div class="profile" id="profile">
+        <div class="notify">
+            <p>Cute!!</p>
+        </div>
+    </div>
+    <h1 id="username">Username,Hi</h1>
+    <label>Set Username</label><input id="input-name" type="text"><button onclick="setName()">Set</button><br/>
+    <label>Set Image</label><input id="input-url" type="text"><button onclick="SetImg()">Set</button><br/>
+
+    <input type="text" id="inputTable1">
+    <input type="text" id="inputTable2">
+    <button onclick="addRow()">Add</button>
+    <button onclick="saveCSV()">Export</button>
+    <table id="table">
+        <tr>
+            <th>Name</th>
+            <th>Phone Number</th>
+        </tr>
+    </table>
+
+    <script>
+        const name = document.getElementById("username");
+        const inputName = document.getElementById("input-name");
+        const profile = document.getElementById("profile");
+        const Inputurl = document.getElementById("input-url")
+        const table = document.getElementById("table")
+        const inputTable1 = document.getElementById("inputTable1");
+        const inputTable2 = document.getElementById("inputTable2");
+
+        function setName(){
+            name.textContent = inputName.value + ", WOW";
+        }
+
+        function SetImg(){
+            profile.style.backgroundImage = "url(" + Inputurl.value +")"
+        }
+
+        function addRow(){
+            const row = document.createElement("tr");
+            const cell1 = document.createElement("td");
+            const cell2 = document.createElement("td");
+            cell1.textContent = inputTable1.value;
+            cell2.textContent = inputTable2.value;
+            row.appendChild(cell1);
+            row.appendChild(cell2);
+            table.appendChild(row);
+        }
+        function saveCSV(){
+            const csvContent = phonenumber.map(row => row.join(",")).join("\n"); // Convert array to CSV string
+            const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
+            const link = document.createElement("a");
+            const url = URL.createObjectURL(blob);
+            link.setAttribute("href", url);
+            link.setAttribute("download", "data.csv");
+            link.style.visibility = "hidden";
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        };
+    </script>
+</body>
+</html>
