@@ -37,3 +37,8 @@ footer{
     margin-bottom: 100%;
     column-gap: 50px;
 }
+.page-container{
+    background-color: black;
+    color: cornflowerblue;
+    font-size: 30px;
+}
